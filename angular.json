@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/theme/angular-material-styles.scss",
+              "src/theme/styles.css"
             ],
             "scripts": []
           },
@@ -120,6 +121,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "SGCOElecta"
 }
