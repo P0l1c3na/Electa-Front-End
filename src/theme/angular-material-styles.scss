@@ -12,17 +12,17 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$SGCOElecta-primary: mat-palette($mat-indigo, 900);
-$SGCOElecta-accent: mat-palette($mat-red, A700);
+$Electa-primary: mat-palette($mat-indigo, 900);
+$Electa-accent: mat-palette($mat-red, A700);
 
 // The warn palette is optional (defaults to red).
-$SGCOElecta-warn: mat-palette($mat-red);
+$Electa-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$SGCOElecta-theme: mat-light-theme($SGCOElecta-primary, $SGCOElecta-accent, $SGCOElecta-warn);
+$Electa-theme: mat-light-theme($Electa-primary, $Electa-accent, $Electa-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($SGCOElecta-theme);
+@include angular-material-theme($Electa-theme);
 

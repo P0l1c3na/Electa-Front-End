@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SGCOElecta": {
+    "Electa": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SGCOElecta",
+            "outputPath": "dist/Electa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,9 +25,14 @@
             ],
             "styles": [
               "src/theme/angular-material-styles.scss",
-              "src/theme/styles.css"
+              "src/theme/styles.css",
+              "src/assets/icons/nucleo-icons.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -64,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SGCOElecta:build"
+            "browserTarget": "Electa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SGCOElecta:build:production"
+              "browserTarget": "Electa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SGCOElecta:build"
+            "browserTarget": "Electa:build"
           }
         },
         "test": {
@@ -112,16 +117,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SGCOElecta:serve"
+            "devServerTarget": "Electa:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SGCOElecta:serve:production"
+              "devServerTarget": "Electa:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "SGCOElecta"
+  "defaultProject": "Electa"
 }

@@ -2,13 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
-import {InicioComponent} from './pages/inicio/inicio.component';
-import {LoginComponent} from './pages/login/login.component';
+import {InicioComponent} from './shared/pages/inicio/inicio.component';
+import {LoginComponent} from './shared/pages/login/login.component';
+import {RecuperarSenhaComponent} from './shared/pages/recuperar-senha/recuperar-senha.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/inicio', pathMatch: 'full' },
     { path: '', component:  InicioComponent },
-    { path: 'login', component:  LoginComponent }
+    { path: 'login', component:  LoginComponent },
+    { path: 'recuperar-senha', component: RecuperarSenhaComponent },
+    { path: 'admin', loadChildren: () => import('./modules/administrador-module/administrador.module').then(lc => lc.AdministradorModule) },
+    { path: 'professor', loadChildren: () => import('./modules/professor-module/professor.module').then(lc => lc.ProfessorModule) },
+    { path: 'prefeitura', loadChildren: () => import('./modules/prefeitura-module/prefeitura.module').then(lc => lc.PrefeituraModule) }
 ];
 
 @NgModule({

@@ -1,28 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {ErrorStateMatcher} from '@angular/material';
-import {MatInputModule, MatInput} from '@angular/material/input';
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
-export class LoginComponent implements OnInit {
+@Component({
+  selector: 'app-recuperar-senha',
+  templateUrl: './recuperar-senha.component.html',
+  styleUrls: ['./recuperar-senha.component.css']
+})
+export class RecuperarSenhaComponent implements OnInit {
   emailFormControl: any;
   matcher: any;
+
   constructor() {
     this.emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
+      Validators.required,
+      Validators.email,
+    ]);
     this.matcher = new MyErrorStateMatcher();
   }
 
   ngOnInit() {
   }
-
 
 }
 

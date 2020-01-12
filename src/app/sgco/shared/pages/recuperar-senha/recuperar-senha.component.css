@@ -1,0 +1,14 @@
+.card-body {
+  max-width: 500px;
+}
+
+.card-divider {
+  margin-top: 5px;
+}
+
+.centering-card {
+  left: 50%;
+  margin-left: -50px;
+  top: 50%;
+  margin-top: 150px;
+}

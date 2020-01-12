@@ -13,7 +13,11 @@ import { MatListModule } from '@angular/material/list';
 
 import {SgcoModule} from './sgco/sgco.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInput, MatInputModule} from '@angular/material';
+import {MatInputModule, MatProgressBarModule} from '@angular/material';
+import {ExtendedModule, FlexModule} from '@angular/flex-layout';
+import { AdministradorRoutingModule } from './sgco/modules/administrador-module/administrador-routing.module';
+import { PrefeituraRoutingModule } from './sgco/modules/prefeitura-module/prefeitura-routing.module';
+import { ProfessorRoutingModule } from './sgco/modules/professor-module/professor-routing.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,13 @@ import {MatInput, MatInputModule} from '@angular/material';
     SgcoModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    FlexModule,
+    ExtendedModule,
+    MatProgressBarModule,
+    AdministradorRoutingModule,
+    PrefeituraRoutingModule,
+    ProfessorRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
