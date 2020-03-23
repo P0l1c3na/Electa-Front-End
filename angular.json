@@ -25,13 +25,9 @@
             ],
             "styles": [
               "src/theme/angular-material-styles.scss",
-              "src/theme/styles.css",
-              "src/assets/icons/nucleo-icons.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/theme/styles.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

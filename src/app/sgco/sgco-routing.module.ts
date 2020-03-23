@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
-import {InicioComponent} from './shared/pages/inicio/inicio.component';
-import {LoginComponent} from './shared/pages/login/login.component';
-import {RecuperarSenhaComponent} from './shared/pages/recuperar-senha/recuperar-senha.component';
+import {InicioComponent} from './init/pages/inicio/inicio.component';
+import {LoginComponent} from './init/pages/login/login.component';
+import {RecuperarSenhaComponent} from './init/pages/recuperar-senha/recuperar-senha.component';
 
 const appRoutes: Routes = [
     { path: '', component:  InicioComponent },

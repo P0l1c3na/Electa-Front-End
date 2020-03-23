@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AdministradorComponent} from './pages/administrador/administrador.component';
+
+import {AdministradorHomeComponent} from './pages/administrador/administrador-home/administrador-home.component';
+import {PrefeituraAdmComponent} from './pages/prefeitura/prefeitura-home/prefeitura-adm.component';
 
 const appRoutes: Routes = [
-  { path: '', component:  AdministradorComponent }
+  {path: '', component: AdministradorHomeComponent},
+  {path: 'refeitura-adm', component: PrefeituraAdmComponent}
 ];
 
 @NgModule({
@@ -19,4 +22,5 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class AdministradorRoutingModule { }
+export class AdministradorRoutingModule {
+}

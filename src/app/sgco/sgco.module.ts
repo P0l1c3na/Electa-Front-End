@@ -11,14 +11,15 @@ import {
   MatToolbarModule,
   MatDividerModule, MatSidenavModule, MatListModule
 } from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexModule} from '@angular/flex-layout';
 
 import { SgcoRoutingModule } from './sgco-routing.module';
-import { LoginComponent } from './shared/pages/login/login.component';
-import {InicioComponent} from './shared/pages/inicio/inicio.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { RecuperarSenhaComponent } from './shared/pages/recuperar-senha/recuperar-senha.component';
-import {FlexModule} from '@angular/flex-layout';
-import {AdministradorModule} from './modules/administrador-module/administrador.module';
+import { LoginComponent } from './init/pages/login/login.component';
+import { InicioComponent } from './init/pages/inicio/inicio.component';
+import { RecuperarSenhaComponent } from './init/pages/recuperar-senha/recuperar-senha.component';
+import { AdministradorModule } from './modules/administrador-module/administrador.module';
+import { ValidaTipoUsuarioService } from './shared/service/valida-tipo-usuario.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,9 @@ import {AdministradorModule} from './modules/administrador-module/administrador.
     RouterModule,
     SgcoRoutingModule,
     AdministradorModule
+  ],
+  providers: [
+    ValidaTipoUsuarioService
   ]
 })
 export class SgcoModule { }

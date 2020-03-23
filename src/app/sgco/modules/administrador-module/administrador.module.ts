@@ -1,17 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AdministradorRoutingModule } from './administrador-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {AdministradorComponent} from './pages/administrador/administrador.component';
+
+import {AdministradorRoutingModule} from './administrador-routing.module';
+import {AdministradorHomeComponent} from './pages/administrador/administrador-home/administrador-home.component';
+import {PrefeituraAdmComponent} from './pages/prefeitura/prefeitura-home/prefeitura-adm.component';
 
 @NgModule({
-  declarations: [AdministradorComponent],
+  declarations: [AdministradorHomeComponent, PrefeituraAdmComponent],
   imports: [
     CommonModule,
     AdministradorRoutingModule,
     RouterModule
   ],
-  exports: [
-  ]
+  exports: []
 })
-export class AdministradorModule { }
+export class AdministradorModule {
+}
