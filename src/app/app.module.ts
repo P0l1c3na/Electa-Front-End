@@ -1,29 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-
-import { AppComponent } from './app.component';
-import {SgcoModule} from './sgco/sgco.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule, MatProgressBarModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatInputModule, MatProgressBarModule, MatSnackBarModule} from '@angular/material';
 import {ExtendedModule, FlexModule} from '@angular/flex-layout';
-import { AdministradorRoutingModule } from './sgco/modules/administrador-module/administrador-routing.module';
-import { PrefeituraRoutingModule } from './sgco/modules/prefeitura-module/prefeitura-routing.module';
-import { ProfessorRoutingModule } from './sgco/modules/professor-module/professor-routing.module';
-import {AuthService} from './sgco/shared/service/auth.service';
+
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {SgcoModule} from './modules/home-module/sgco.module';
+import {AdministradorRoutingModule} from './modules/administrador-module/administrador-routing.module';
+import {PrefeituraRoutingModule} from './modules/prefeitura-module/prefeitura-routing.module';
+import {ProfessorRoutingModule} from './modules/professor-module/professor-routing.module';
+import {AuthService} from './core/service/auth.service';
+import {HeaderComponent} from './core/components/header/header.component';
+import {ProgressLoaderComponent} from './core/components/progress-loader/progress-loader.component';
+import {LoaderInterceptor} from './core/interceptors/loader.interceptor';
+
+import {LOCALE_ID} from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ProgressLoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +53,7 @@ import {AuthService} from './sgco/shared/service/auth.service';
     MatListModule,
     MatProgressBarModule,
     MatInputModule,
+    MatSnackBarModule,
     ExtendedModule,
     AppRoutingModule,
     SgcoModule,
@@ -47,7 +61,11 @@ import {AuthService} from './sgco/shared/service/auth.service';
     PrefeituraRoutingModule,
     ProfessorRoutingModule
   ],
-  providers: [AuthService],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

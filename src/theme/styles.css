@@ -1,4 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/*Global app style*/
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*Snackbar colors*/
+.alertSnack {
+  background: #eeeeee;
+   color: black;
+}
+.butttonAlertSnack button{
+  background: #eeeeee;
+  color:black;
+}
+
+.sucessSnack {
+  background: #57ff00;
+  color: azure;
+}
+.butttonSucessSnack button{
+  background:  #57ff00;
+  color:azure ;
+}
+
+.warningSnack {
+  background: #eb7b08;
+  color:azure;
+}
+.butttonWarningSnack button{
+  background: #eb7b08;
+  color:azure;
+}
+
+.errorSnack {
+  color:azure;
+  background: #eb0417
+}
+.butttonErrorSnack button{
+  background: #eb0417;
+  color:azure;
+}
+
+

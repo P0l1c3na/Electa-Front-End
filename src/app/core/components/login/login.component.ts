@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ValidaTipoUsuarioService} from '../../../shared/service/valida-tipo-usuario.service';
+import {ValidaTipoUsuarioService} from '../../service/valida-tipo-usuario.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService} from '../../../shared/service/auth.service';
-import {TipoUsuario} from '../../../shared/enums/tipo-usuario.enum';
-import {User} from '../../../shared/models/user';
+import {AuthService} from '../../service/auth.service';
+import {TipoUsuario} from '../../enums/tipo-usuario.enum';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.dadosLogin = this.formBuilder.group({
-        login: ['', Validators.required],
-        senha: ['', Validators.required]
+        login: ['phaelpolicena@gmail.com', Validators.required],
+        senha: ['123456', Validators.required]
   });
   }
 

@@ -5,7 +5,7 @@
       <mat-card-subtitle>Faça login para continuar</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="dadosLogin" (ngSubmit)="fazerLogin()" fxLayout="column" fxLayoutAlign="space-between none">
+      <form [formGroup]="dadosLogin" fxLayout="column" fxLayoutAlign="space-between none">
         <mat-form-field fxFlex="33" fxFlexOffset="2">
           <input matInput placeholder="Digite o login" type="text" minlength="1" maxlength="32" required
                  formControlName="login">
@@ -21,7 +21,7 @@
           </button>
         </mat-form-field>
         <div fxFlex="33" fxLayoutAlign="center" fxFlexOffset="5">
-          <button fxFlex="50" mat-raised-button color="primary" type="submit" [disabled]="dadosLogin.invalid">Acessar</button>
+          <button fxFlex="50" mat-raised-button color="primary" type="submit" [disabled]="dadosLogin.invalid" (click)="fazerLogin()" >Acessar</button>
         </div>
       </form>
     </mat-card-content>

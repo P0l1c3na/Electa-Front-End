@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-import {environment} from '../../../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {IAuthService} from '../intefaces/i-auth-service';
 import {User} from '../models/user';
 import {take} from 'rxjs/operators';
 import {TipoUsuario} from '../enums/tipo-usuario.enum';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MessageHandlerService} from './message-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,8 @@ export class AuthService implements IAuthService {
 
   private userSubject: BehaviorSubject<User>;
 
-  constructor(private  httpClient: HttpClient) {
-    this.logout();
+  constructor(private  httpClient: HttpClient,
+              private messageHandlerService: MessageHandlerService) {
     const savedUser: User = JSON.parse(localStorage.getItem(environment.auth_key_storage)) || [];
     this.userSubject = new BehaviorSubject<User>(savedUser);
 
@@ -80,12 +82,16 @@ export class AuthService implements IAuthService {
 
     this.httpClient.post(`${environment.api_url}oauth/token`,
       params.toString(), {headers})
+      .pipe(take(1))
       .subscribe(
         dadosDeAutenticacao => {
           this.getUserInformation(dadosLogin, dadosDeAutenticacao);
           console.log(dadosDeAutenticacao);
+          this.messageHandlerService.showMessageSucessfull('Acesso permitido!');
         },
-        err => alert('Senha ou login inválidos.'));
+        (err: HttpErrorResponse) => {
+          this.messageHandlerService.showStatusHttpMessage(err.message, err.status);
+        });
   }
 
   setUserInformation(user: User) {

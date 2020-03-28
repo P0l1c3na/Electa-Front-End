@@ -6,9 +6,9 @@ import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
 
-  { path: '', redirectTo: '/inicio-sgco', pathMatch: 'full' },
-  { path: 'inicio-sgco',
-    loadChildren: () => import('./sgco/sgco.module').then(m => m.SgcoModule)}
+  { path: '', redirectTo: '/sgco-home', pathMatch: 'full' },
+  { path: 'sgco-home',
+    loadChildren: () => import('./modules/home-module/sgco.module').then(m => m.SgcoModule)}
 ];
 
 @NgModule({

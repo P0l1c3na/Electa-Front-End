@@ -15,17 +15,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexModule} from '@angular/flex-layout';
 
 import { SgcoRoutingModule } from './sgco-routing.module';
-import { LoginComponent } from './init/pages/login/login.component';
-import { InicioComponent } from './init/pages/inicio/inicio.component';
-import { RecuperarSenhaComponent } from './init/pages/recuperar-senha/recuperar-senha.component';
-import { AdministradorModule } from './modules/administrador-module/administrador.module';
-import { ValidaTipoUsuarioService } from './shared/service/valida-tipo-usuario.service';
+import { LoginComponent } from '../../core/components/login/login.component';
+import { RecuperarSenhaComponent } from '../../core/components/recuperar-senha/recuperar-senha.component';
+import { AdministradorModule } from '../administrador-module/administrador.module';
+import { ValidaTipoUsuarioService } from '../../core/service/valida-tipo-usuario.service';
+import { SgcoHomeComponent } from './sgco-home/sgco-home.component';
 
 @NgModule({
   declarations: [
-    InicioComponent,
     LoginComponent,
-    RecuperarSenhaComponent
+    RecuperarSenhaComponent,
+    SgcoHomeComponent
   ],
   exports: [
   ],
