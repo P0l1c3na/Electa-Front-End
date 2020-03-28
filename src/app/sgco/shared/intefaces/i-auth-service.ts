@@ -1,5 +1,6 @@
 import {User} from '../models/user';
 import {Observable} from 'rxjs';
+import {TipoUsuario} from '../enums/tipo-usuario.enum';
 
 export interface IAuthService {
 
@@ -13,7 +14,7 @@ export interface IAuthService {
 
   getUserInformation(dadosLogin: any, dadosDeAutenticacao: any);
 
-  checkCredentials();
+  checkCredentials(tipoUsuario: TipoUsuario): boolean;
 
   login(dadosLogin: User);
 

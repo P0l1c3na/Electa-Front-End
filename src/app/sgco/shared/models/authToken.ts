@@ -7,7 +7,7 @@ export class AuthToken {
   // tslint:disable-next-line:variable-name
   refresh_token: string;
   // tslint:disable-next-line:variable-name
-  expires_in: string;
+  expires_in: number;
   scope: string;
 
 }

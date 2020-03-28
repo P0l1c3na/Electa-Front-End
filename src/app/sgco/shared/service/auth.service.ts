@@ -6,6 +6,7 @@ import {environment} from '../../../../environments/environment';
 import {IAuthService} from '../intefaces/i-auth-service';
 import {User} from '../models/user';
 import {take} from 'rxjs/operators';
+import {TipoUsuario} from '../enums/tipo-usuario.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,13 @@ export class AuthService implements IAuthService {
     this.userSubject = new BehaviorSubject<User>(savedUser);
 
     this.userSubject.subscribe((user) => {
+      this.user = user;
       localStorage.setItem(environment.auth_key_storage, JSON.stringify(user));
     });
   }
 
-  checkCredentials() {
+  checkCredentials(tipoUsuario: TipoUsuario): boolean {
+    return this.user.tipoUsuario === tipoUsuario;
   }
 
   getUserInformation(dadosLogin: any, dadosDeAutenticacao: any) {
@@ -40,13 +43,13 @@ export class AuthService implements IAuthService {
     this.httpClient.post(`${environment.api_url}usuario`, dadosLogin, {headers})
       .pipe(take(1))
       .subscribe((dados: any) => {
-          this.user = new User();
-          this.user.authToken = dadosDeAutenticacao;
-          this.user.tipoUsuario = dadosLogin.tipoUsuario;
-          this.user.login = dadosLogin.login;
-          this.user.senha = dadosLogin.senha;
-          this.user.nome = dados.nome;
-          this.user.email = dados.email;
+          const user = new User();
+          user.authToken = dadosDeAutenticacao;
+          user.tipoUsuario = dadosLogin.tipoUsuario;
+          user.login = dadosLogin.login;
+          user.senha = dadosLogin.senha;
+          user.nome = dados.nome;
+          user.email = dados.email;
           this.setUserInformation(this.user);
 
         }, err => alert('Usuário não encontrado! ' + err)
@@ -91,11 +94,15 @@ export class AuthService implements IAuthService {
 
   logout() {
     localStorage.clear();
-    this.userSubject.next(undefined);
+    this.userSubject.next(null);
   }
 
   userIsLogged(): boolean {
-    return true;
+    if (this.user == null) {
+      return false;
+    } else {
+      return this.user.authToken.expires_in >= (Date.now() / 1000);
+    }
   }
 
 }
