@@ -1,18 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
 import {LoginComponent} from '../../core/components/login/login.component';
 import {RecuperarSenhaComponent} from '../../core/components/recuperar-senha/recuperar-senha.component';
 import {SgcoHomeComponent} from './sgco-home/sgco-home.component';
+import {AdministradorGuard} from '../../core/guards/administrador.guard';
 
 const appRoutes: Routes = [
-    { path: '', component:  SgcoHomeComponent },
-    { path: 'login', component:  LoginComponent },
-    { path: 'recuperar-senha', component: RecuperarSenhaComponent },
-    { path: 'admin', loadChildren: () => import('../administrador-module/administrador.module').then(lc => lc.AdministradorModule) },
-    { path: 'professor', loadChildren: () => import('../professor-module/professor.module').then(lc => lc.ProfessorModule) },
-    { path: 'prefeitura', loadChildren: () => import('../prefeitura-module/prefeitura.module').then(lc => lc.PrefeituraModule) }
+  {path: '', component: SgcoHomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'recuperar-senha', component: RecuperarSenhaComponent},
+  {
+    path: 'admin',
+    loadChildren: () => import('../administrador-module/administrador.module').then(lc => lc.AdministradorModule),
+    canActivate: [AdministradorGuard],
+    canActivateChild: [AdministradorGuard],
+    canLoad: [AdministradorGuard]
+  },
+  {path: 'professor', loadChildren: () => import('../professor-module/professor.module').then(lc => lc.ProfessorModule)},
+  {path: 'prefeitura', loadChildren: () => import('../prefeitura-module/prefeitura.module').then(lc => lc.PrefeituraModule)}
 ];
 
 @NgModule({
@@ -27,4 +34,5 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class SgcoRoutingModule { }
+export class SgcoRoutingModule {
+}

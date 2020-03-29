@@ -1,8 +1,15 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="header-fixed" color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+    <button mat-icon-button  fxShow="true" fxHide.gt-sm [matMenuTriggerFor]="appMenu">
       <mat-icon>menu</mat-icon>
     </button>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item routerLink="sgco-home">Inicio</button>
+      <button mat-menu-item>Electa</button>
+      <button mat-menu-item>Contato</button>
+      <button mat-menu-item>Autenticação de documentos</button>
+      <button mat-menu-item routerLink="login">Entrar</button>
+    </mat-menu>
     <span>SGCOElecta</span>
     <span class="menu-spacer"></span>
     <div fxShow="true" fxHide.lt-md fxLayoutAlign="flex-end">
@@ -11,7 +18,8 @@
       <a href="#" mat-button>Electa</a>
       <a href="#" mat-button>Contato</a>
       <a href="#" mat-button>Autenticação de documentos</a>
-      <a routerLink="login" routerLinkActive="login" mat-raised-button routerLinkActive="active"> <mat-icon inline="true" matSuffix>open_in_new</mat-icon> Entrar</a>
+      <a *ngIf="!user.nome" routerLink="login" mat-raised-button routerLinkActive="active"> <mat-icon inline="true" matSuffix>arrow_forward_ios</mat-icon> Entrar</a>
+      <a *ngIf="user.nome" routerLink="sgco-home" mat-raised-button routerLinkActive="active" (click)="logout()"> <mat-icon inline="true" matSuffix>exit_to_app</mat-icon> Sair</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

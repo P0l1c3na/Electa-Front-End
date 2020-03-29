@@ -39,12 +39,11 @@ export class LoginComponent implements OnInit {
   fazerLogin() {
     const user: User = this.dadosLogin.value;
     const tipoUsr = this.validaTipoUsrService.retornaTipoUsuario(this.dadosLogin.value.login);
-
+    user.tipoUsuario = tipoUsr;
+    this.authService.login(user);
     switch (tipoUsr) {
       case TipoUsuario.administrador:
-        user.tipoUsuario = tipoUsr;
-        this.authService.login(user);
-        // this.router.navigate(['admin']);
+        this.router.navigate(['admin']);
         break;
       case TipoUsuario.prefeitura:
         break;

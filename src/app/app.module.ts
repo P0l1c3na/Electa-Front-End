@@ -11,7 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
-import {MatInputModule, MatProgressBarModule, MatSnackBarModule} from '@angular/material';
+import {MatInputModule, MatMenuModule, MatProgressBarModule, MatSnackBarModule} from '@angular/material';
 import {ExtendedModule, FlexModule} from '@angular/flex-layout';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -59,7 +59,8 @@ registerLocaleData(localePt);
     SgcoModule,
     AdministradorRoutingModule,
     PrefeituraRoutingModule,
-    ProfessorRoutingModule
+    ProfessorRoutingModule,
+    MatMenuModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},

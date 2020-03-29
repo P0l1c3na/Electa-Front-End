@@ -52,9 +52,13 @@ export class AuthService implements IAuthService {
           user.senha = dadosLogin.senha;
           user.nome = dados.nome;
           user.email = dados.email;
-          this.setUserInformation(this.user);
-
-        }, err => alert('Usuário não encontrado! ' + err)
+          this.setUserInformation(user);
+          console.log(user);
+        },
+        (err: HttpErrorResponse) => {
+          this.messageHandlerService.showAlertMessage('Usuario não encontrado na base de dados.');
+          console.log(err);
+        }
       );
   }
 
@@ -86,8 +90,6 @@ export class AuthService implements IAuthService {
       .subscribe(
         dadosDeAutenticacao => {
           this.getUserInformation(dadosLogin, dadosDeAutenticacao);
-          console.log(dadosDeAutenticacao);
-          this.messageHandlerService.showMessageSucessfull('Acesso permitido!');
         },
         (err: HttpErrorResponse) => {
           this.messageHandlerService.showStatusHttpMessage(err.message, err.status);
