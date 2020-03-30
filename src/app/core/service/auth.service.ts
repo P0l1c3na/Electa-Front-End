@@ -9,6 +9,7 @@ import {take} from 'rxjs/operators';
 import {TipoUsuario} from '../enums/tipo-usuario.enum';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MessageHandlerService} from './message-handler.service';
+import {AuthToken} from '../models/authToken';
 
 @Injectable({
   providedIn: 'root'
@@ -62,15 +63,7 @@ export class AuthService implements IAuthService {
       );
   }
 
-  getUserOauthToken() {
-    return this.user.authToken.access_token;
-  }
-
-  getUserLogged(): Observable<User> {
-    return this.userSubject.asObservable();
-  }
-
-  login(dadosLogin: User) {
+  getUserOauthToken(dadosLogin: User): AuthToken {
     const params = new URLSearchParams();
     params.append('grant_type', 'password');
     params.append('username', dadosLogin.login);
@@ -89,11 +82,20 @@ export class AuthService implements IAuthService {
       .pipe(take(1))
       .subscribe(
         dadosDeAutenticacao => {
-          this.getUserInformation(dadosLogin, dadosDeAutenticacao);
+          this.user.authToken = dadosDeAutenticacao as AuthToken;
         },
         (err: HttpErrorResponse) => {
           this.messageHandlerService.showStatusHttpMessage(err.message, err.status);
         });
+    return this.user.authToken;
+  }
+
+  getUserLogged(): Observable<User> {
+    return this.userSubject.asObservable();
+  }
+
+  login(dadosLogin: User) {
+    this.getUserInformation(dadosLogin, this.getUserOauthToken(dadosLogin));
   }
 
   setUserInformation(user: User) {
@@ -109,7 +111,7 @@ export class AuthService implements IAuthService {
     if (this.user == null) {
       return false;
     } else {
-      return this.user.authToken.expires_in >= (Date.now() / 1000);
+      return this.getUserOauthToken(this.user).expires_in > 0;
     }
   }
 

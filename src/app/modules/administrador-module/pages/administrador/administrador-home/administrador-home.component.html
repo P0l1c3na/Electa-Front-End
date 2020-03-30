@@ -1,1 +1,75 @@
-<p>administrador works!</p>
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Seja bem vindo {{usuario.nome}}</h2>
+        <h5>Aqui você tem acesso à gestão do sistema ao todo, cadastro de todas as informações vitais
+          para que tudo
+          funcione.</h5>
+      </div>
+    </div>
+    <div class="row col-md-12 py-2">
+      <mat-accordion class="w-100 mt-2 col-md-12">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Informações pessoais
+            </mat-panel-title>
+            <mat-panel-description>
+              Visualize suas informações pessoais e altere se necessário.
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="col-md-12">
+            <mat-label>Nome {{usuario.nome}}</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <mat-label>email {{usuario.email}}</mat-label>
+            <input matInput type="number" min="1">
+          </mat-form-field>
+
+          <mat-form-field class="col-md-12">
+            <mat-label>Data de cadastro {{usuario.dataDeCadastro}}</mat-label>
+            <input matInput min="1">
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="row py-2 d-flex justify-content-center align-content-xl-stretch">
+      <div class="col-md-5 m-3">
+        <mat-card matRipple routerLink="prefeitura-adm">
+          <mat-card-header>
+            <mat-card-title>Oficinas Socioeducativas</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://cdn.pixabay.com/photo/2017/12/22/08/01/paper-3033204_1280.jpg"
+               alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              Aqui você pode criar as oficinas socioeducativas, cadastrando prefeituras, projetos, localidades e as
+              oficinas, contendo os alunos, professores e turmas.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-md-5 m-3">
+        <mat-card matRipple>
+          <mat-card-header>
+            <mat-card-title>Administradores do sistema</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://cdn.pixabay.com/photo/2017/12/22/08/01/paper-3033204_1280.jpg"
+               alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              Aqui você pode cadastrar novos administradores do sistema, onde poderão acessar todos os modulos e
+              visualizar todas as informações sobre as oficinas.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

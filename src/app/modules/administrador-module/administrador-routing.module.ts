@@ -7,7 +7,7 @@ import {PrefeituraAdmComponent} from './pages/prefeitura/prefeitura-home/prefeit
 
 const appRoutes: Routes = [
   {path: '', component: AdministradorHomeComponent},
-  {path: 'refeitura-adm', component: PrefeituraAdmComponent}
+  {path: 'prefeitura-adm', component: PrefeituraAdmComponent}
 ];
 
 @NgModule({

@@ -1,10 +1,11 @@
 import {User} from '../models/user';
 import {Observable} from 'rxjs';
 import {TipoUsuario} from '../enums/tipo-usuario.enum';
+import {AuthToken} from '../models/authToken';
 
 export interface IAuthService {
 
-  getUserOauthToken();
+  getUserOauthToken(dadosLogin: User): AuthToken;
 
   userIsLogged(): boolean;
 
